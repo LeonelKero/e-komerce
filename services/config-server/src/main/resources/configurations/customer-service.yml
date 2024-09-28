@@ -1,0 +1,12 @@
+server:
+  port: 8081
+spring:
+  # Mongo - these configurations match the ones defined for Mongo Database
+  data:
+    mongodb:
+      username: nero
+      password: nero
+      host: localhost
+      port: 27017
+      database: customers
+      authentication-database: admin
