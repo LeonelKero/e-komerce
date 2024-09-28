@@ -10,7 +10,7 @@ E-Komerce is a microservice application builded for modeling the interaction of 
 - Product domain
 - Order domain
 - Payment domain
-- 
+- Notification domain
 
 ## Application Modules
 
