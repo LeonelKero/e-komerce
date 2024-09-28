@@ -1,0 +1,76 @@
+services:
+  #  Services definition
+  #  PostgreSQL
+  postgres:
+    container_name: ms_pg_sql
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - microservices-net
+    restart: unless-stopped
+
+  #  PG_Admin
+  pgadmin:
+    container_name: ms_pgadmin
+    image: dpage/pgadmin4:8.4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - microservices-net
+    restart: unless-stopped
+
+  # Mongo DB
+  mongodb:
+    container_name: ms_mongodb
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=nero
+      - MONGO_INITDB_ROOT_PASSWORD=nero
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo:/data
+
+  # Mongo Express
+  mongo-express:
+    container_name: ms_mongo_express
+    image: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=nero
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=nero
+      - ME_CONFIG_MONGODB_SERVER=mongodb # This name represents the service defined earlier (line 36)
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+
+  # Mail Dev for sending emails
+  mail-dev:
+    container_name: ms_mail_dev
+    image: maildev/maildev
+    ports:
+      - "1080:1080" # For the UI
+      - "1025:1025" # For SMTP server
+
+# Networks definition
+networks:
+  microservices-net:
+    driver: bridge
+
+# Volumes definition
+volumes:
+  postgres:
+  pgadmin:
+  mongo:
