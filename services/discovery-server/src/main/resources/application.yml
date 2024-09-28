@@ -1,5 +1,6 @@
 spring:
   application:
     name: discovery-server
+  # Location of the configuration server in orther to fetch configs
   config:
     import: optional:configserver:http://localhost:8888
