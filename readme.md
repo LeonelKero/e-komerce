@@ -2,8 +2,17 @@
 
 ## Description
 
+E-Komerce is a microservice application builded for modeling the interaction of elements which constitute a real world e-commerce application, including product browsing, product ordering, customer management, payment, notification management, etc. With those elements in separated services.
 
-## Topics
+## Domains
+
+- Customer domain
+- Product domain
+- Order domain
+- Payment domain
+- 
+
+## Application Modules
 
 - Configuration Server
 
