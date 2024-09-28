@@ -15,6 +15,7 @@ E-Komerce is a microservice application builded for modeling the interaction of 
 ## Application Modules
 
 - Configuration Server
+- Discovery Server
 
 
 ## Features
@@ -23,3 +24,6 @@ E-Komerce is a microservice application builded for modeling the interaction of 
 
 - Java
 - Spring Starter Web
+- Spring Cloud Config Server
+- Spring Cloud Starter Config
+- Spring Cloud Starter Netflix Eureka Server
