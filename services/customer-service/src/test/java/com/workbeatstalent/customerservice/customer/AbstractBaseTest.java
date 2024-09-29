@@ -9,7 +9,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
-@SpringBootTest(classes = {CustomerServiceApplication.class})
+//@SpringBootTest(classes = {CustomerServiceApplication.class})
 public class AbstractBaseTest {
 
     @Container
