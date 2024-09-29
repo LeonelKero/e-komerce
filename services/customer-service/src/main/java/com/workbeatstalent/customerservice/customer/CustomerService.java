@@ -34,8 +34,10 @@ public class CustomerService {
         final var existingCustomer = this.repository.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with ID %s not found", id)));
 
-        mergeCustomer(customer, existingCustomer);
-        this.repository.save(existingCustomer);
+        var isUpdateNeeded = false;
+        isUpdateNeeded = mergeCustomer(customer, existingCustomer, isUpdateNeeded);
+        if (isUpdateNeeded) this.repository.save(existingCustomer);
+        // if false, mean no need for update - then database action not performed
     }
 
     public CustomerResponse getById(final String customerId) {
@@ -68,26 +70,40 @@ public class CustomerService {
         return this.repository.existsByLastname(lastname);
     }
 
-    private void mergeCustomer(final CustomerRequest request, final Customer existingCustomer) {
+    private Boolean mergeCustomer(final CustomerRequest request, final Customer existingCustomer, Boolean isUpdateNeeded) {
         if (StringUtils.isNotBlank(request.firstname().trim()) && !request.firstname().equals(existingCustomer.getFirstname())) {
             existingCustomer.setFirstname(request.firstname().trim());
+            isUpdateNeeded = true;
         }
         if (StringUtils.isNotBlank(request.lastname().trim()) && !request.firstname().equals(existingCustomer.getLastname())) {
             existingCustomer.setLastname(request.lastname().trim());
+            isUpdateNeeded = true;
         }
-        if (StringUtils.isNotBlank(request.email().trim()) && !request.firstname().equals(existingCustomer.getEmail())) {
+        if (StringUtils.isNotBlank(request.email().trim()) && !request.email().equals(existingCustomer.getEmail())) {
             // Meaning customer has changed his/her email
             // So, check if that email is not already in use
             final var customer = this.repository.findByEmail(request.email());
             if (customer.isEmpty()) {
                 // so, nobody with that email exists
                 existingCustomer.setEmail(request.email().trim());
+                isUpdateNeeded = true;
             }
             // Otherwise, keep the existing email
         }
         if (request.address() != null) {
-            existingCustomer.setAddress(request.address());
+            if (StringUtils.isNotBlank(request.address().getCity().trim()) && !request.address().getCity().equals(existingCustomer.getAddress().getCity())) {
+                existingCustomer.getAddress().setCity(request.address().getCity().trim());
+                isUpdateNeeded = true;
+            }
+            if (StringUtils.isNotBlank(request.address().getTown().trim()) && !request.address().getTown().equals(existingCustomer.getAddress().getTown())) {
+                existingCustomer.getAddress().setTown(request.address().getTown().trim());
+                isUpdateNeeded = true;
+            }
+            if (StringUtils.isNotBlank(request.address().getStreet().trim()) && !request.address().getStreet().equals(existingCustomer.getAddress().getStreet())) {
+                existingCustomer.getAddress().setStreet(request.address().getStreet().trim());
+                isUpdateNeeded = true;
+            }
         }
-
+        return isUpdateNeeded;
     }
 }
