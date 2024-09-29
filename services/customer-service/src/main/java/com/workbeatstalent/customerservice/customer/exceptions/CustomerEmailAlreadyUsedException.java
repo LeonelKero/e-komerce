@@ -6,5 +6,5 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class CustomerEmailAlreadyUsedException extends RuntimeException {
-    private final String msg;
+    private final String message;
 }
