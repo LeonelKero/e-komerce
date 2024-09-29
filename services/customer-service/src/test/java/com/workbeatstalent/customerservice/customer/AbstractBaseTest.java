@@ -1,15 +1,15 @@
 package com.workbeatstalent.customerservice.customer;
 
-import com.workbeatstalent.customerservice.CustomerServiceApplication;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Testcontainers
-//@SpringBootTest(classes = {CustomerServiceApplication.class})
 public class AbstractBaseTest {
 
     @Container
@@ -22,4 +22,9 @@ public class AbstractBaseTest {
         registry.add("spring.data.mongodb.port", mongoDBContainer::getFirstMappedPort);
     }
 
+    @Test
+    void isContainerUpAndRunning() {
+        assertThat(mongoDBContainer.isCreated()).isTrue();
+        assertThat(mongoDBContainer.isRunning()).isTrue();
+    }
 }
