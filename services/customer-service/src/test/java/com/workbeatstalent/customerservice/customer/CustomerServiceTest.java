@@ -19,7 +19,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @SpringBootTest
 class CustomerServiceTest extends AbstractBaseTest {
 
-    @Autowired
     private CustomerService underTest;
 
     @Autowired
