@@ -26,6 +26,7 @@ public class CustomerController {
         return ResponseEntity.ok(this.customerService.getAll());
     }
 
+    @GetMapping(path = {"/{id}"})
     public ResponseEntity<?> getById(final @PathVariable String id) {
         try {
             final var result = this.customerService.getById(id);
