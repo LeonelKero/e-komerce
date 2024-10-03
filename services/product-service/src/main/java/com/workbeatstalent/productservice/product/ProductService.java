@@ -48,8 +48,8 @@ public class ProductService {
             final var product = storedProducts.get(i);
             final var newQuantity = getQuantity(storesRequest, i, product);
             product.setAvailableQuantity(newQuantity);
-            final var saved = this.repository.save(product);
-            purchasedProducts.add(this.mapper.toPurchaseResponse(saved, storesRequest.get(i).requestedQuantity()));
+            this.repository.save(product);
+            purchasedProducts.add(this.mapper.toPurchaseResponse(product, storesRequest.get(i).requestedQuantity()));
         }
         return purchasedProducts;
     }
