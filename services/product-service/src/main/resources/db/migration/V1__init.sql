@@ -13,6 +13,8 @@ create table if not exists product(
     category_id integer constraint fk_category_id references category
 );
 
-create sequence if not exists category_seq increment by 50;
+--create sequence if not exists category_seq start with 1 increment by 1;
+create sequence if not exists category_seq start with 1;
 
-create sequence if not exists product_seq increment by 50;
+--create sequence if not exists product_seq start with 1 increment by 1;
+create sequence if not exists product_seq start with 1;

@@ -11,23 +11,16 @@ INSERT INTO category (id, name, description) VALUES (nextval('category_seq'), 'A
 INSERT INTO category (id, name, description) VALUES (nextval('category_seq'), 'Garden', 'Gardening tools and supplies');
 
 -- Using the sequence for generating product IDs and referring to category IDs from the category table
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Laptop', 'Portable computer', 25, 999.99, 1);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'T-shirt', 'Cotton t-shirt', 100, 19.99, 2);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Refrigerator', 'Double-door fridge', 10, 499.99, 3);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Novel', 'Thriller fiction book', 50, 14.99, 4);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Action Figure', 'Superhero toy', 75, 24.99, 5);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Basketball', 'Official size basketball', 40, 29.99, 6);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Sofa', 'Three-seater leather sofa', 5, 799.99, 7);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Shampoo', 'Hair care shampoo', 200, 9.99, 8);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Car Tires', 'All-season tires', 20, 129.99, 9);
-INSERT INTO product (id, name, description, available_quantity, price, category_id)
-VALUES (nextval('product_seq'), 'Garden Hose', 'Flexible garden hose', 60, 24.99, 10);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Macbook Pro 16 M3 Max', 'Portable computer for ', 15, 3999.99, 1);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'PS5 Pro', 'Gaming console next gen', 25, 500.0, 1);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'T-shirt', 'Cotton t-shirt', 100, 19.99, 2);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'stand Smith', 'Simple and beautiful shoes', 80, 750.50, 2);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Refrigerator', 'Double-door fridge', 10, 499.99, 3);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Novel', 'Thriller fiction book', 50, 14.99, 4);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Action Figure', 'Superhero toy', 75, 24.99, 5);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Basketball', 'Official size basketball', 40, 29.99, 6);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Sofa', 'Three-seater leather sofa', 5, 799.99, 7);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Coach', 'Two-seater soft coach', 5, 799.99, 10);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Shampoo', 'Hair care shampoo', 200, 9.99, 8);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Car Tires', 'All-season tires', 20, 129.99, 9);
+INSERT INTO product (id, name, description, available_quantity, price, category_id) VALUES (nextval('product_seq'), 'Garden Hose', 'Flexible garden hose', 60, 24.99, 10);
