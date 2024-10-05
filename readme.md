@@ -27,6 +27,7 @@ E-Komerce is a microservice application builded for modeling the interaction of 
 - Spring Boot Starter Web
 - Spring Cloud Config Server
 - Spring Cloud Starter Config
+- Spring Cloud Starter OpenFeign
 - Spring Boot Cloud Starter Netflix Eureka Server
 - Docker
 - PostgreSQL
