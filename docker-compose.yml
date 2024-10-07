@@ -64,6 +64,11 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: orders
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    volumes:
+      - mysql:/var/lib/mysql
     ports:
       - "3306:3306"
 
@@ -85,3 +90,4 @@ volumes:
   postgres:
   pgadmin:
   mongo:
+  mysql:
