@@ -57,6 +57,16 @@ services:
       - "8081:8081"
     restart: unless-stopped
 
+# MySQL
+  mysql:
+    container_name: ms_mysql
+    image: mysql:lts
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - "3306:3306"
+
   # Mail Dev for sending emails
   mail-dev:
     container_name: ms_mail_dev
