@@ -25,11 +25,11 @@ public class ProductClient {
         this.restTemplate = restTemplate;
     }
 
-    public List<ProductPurchaseResponse> getPurchases(final List<ProductPurchaseRequest> productPurchaseRequests) {
+    public List<ProductPurchaseResponse> getPurchases(final List<ProductPurchaseRequest> requestBody) {
         final var headers = new HttpHeaders();
         headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         // Note: Possibility to pass other headers parameters like API key and security stuff
-        final var requestEntity = new HttpEntity<>(productPurchaseRequests, headers);
+        final var requestEntity = new HttpEntity<>(requestBody, headers);
         final var responseType = new ParameterizedTypeReference<List<ProductPurchaseResponse>>() {
         };
 
