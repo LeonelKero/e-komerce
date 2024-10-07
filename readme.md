@@ -40,3 +40,5 @@ E-Komerce is a microservice application builded for modeling the interaction of 
 - Spring Boot Devtools
 - Spring Boot Testcontainer
 - Flyway 
+- Spring Cloud Starter OpenFeign
+- MySQL
