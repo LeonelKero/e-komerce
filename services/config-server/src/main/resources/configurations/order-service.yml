@@ -2,6 +2,7 @@ server:
   port: 8083
 
 spring:
+  # Database configuration properties
   datasource:
     url: jdbc:mysql://localhost:3306/orders?createDatabaseIfNotExist=true
     username: mysql
@@ -12,6 +13,17 @@ spring:
     hibernate:
       ddl-auto: create
     database-platform: org.hibernate.dialect.MySQL8Dialect
+  # Kafka configuration properties
+  kafka:
+    producer:
+      bootstrap-servers:
+        - localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        # 'confirmation' represents the OrderConfirmation value passed to kafka order producer
+        spring.json.type.mapping: confirmation:com.workbeattalent.orderservice.kafka.OrderConfirmation
+
 
 application:
   config: # Ports of the API Gateway here
