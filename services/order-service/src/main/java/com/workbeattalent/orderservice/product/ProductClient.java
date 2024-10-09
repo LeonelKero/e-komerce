@@ -1,7 +1,6 @@
 package com.workbeattalent.orderservice.product;
 
 import com.workbeattalent.orderservice.exceptions.BusinessException;
-import com.workbeattalent.orderservice.order.dto.ProductPurchaseRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
