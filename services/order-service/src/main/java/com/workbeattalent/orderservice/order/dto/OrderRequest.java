@@ -1,6 +1,7 @@
 package com.workbeattalent.orderservice.order.dto;
 
 import com.workbeattalent.orderservice.order.PaymentMethod;
+import com.workbeattalent.orderservice.product.ProductPurchaseRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +31,6 @@ public record OrderRequest(
 
         @NotNull(message = "At least one product must be purchased")
         @NotEmpty(message = "At least one product must be purchased")
-        List<PurchaseRequest> products
+        List<ProductPurchaseRequest> products
 ) {
 }
