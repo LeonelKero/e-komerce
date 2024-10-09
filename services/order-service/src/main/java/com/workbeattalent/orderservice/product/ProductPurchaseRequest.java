@@ -1,4 +1,4 @@
-package com.workbeattalent.orderservice.order.dto;
+package com.workbeattalent.orderservice.product;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
