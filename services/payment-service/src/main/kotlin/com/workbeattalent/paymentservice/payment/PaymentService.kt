@@ -16,7 +16,7 @@ class PaymentService(
     fun createPayment(request: PaymentRequest): Long {
         // Persist payment
         val payment = this.paymentRepository.save(mapper.toPayment(request))
-        // Send message to the notification service
+        // Send message to the notification service - through Kafka
         notificationProducer.sendNotification(
             PaymentNotificationRequest(
                 request.orderRef,
