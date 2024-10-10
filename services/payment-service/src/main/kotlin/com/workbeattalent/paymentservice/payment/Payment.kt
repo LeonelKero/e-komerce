@@ -23,10 +23,10 @@ class Payment(
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
-    val createdAt: LocalDateTime,
+    val createdAt: LocalDateTime? = LocalDateTime.now(),
 
     @LastModifiedDate
     @Column(insertable = false)
-    val modifiedAt: LocalDateTime
+    val modifiedAt: LocalDateTime? = LocalDateTime.now()
 ) {
 }
