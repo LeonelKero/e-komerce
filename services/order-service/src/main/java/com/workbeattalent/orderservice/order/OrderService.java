@@ -1,6 +1,7 @@
 package com.workbeattalent.orderservice.order;
 
 import com.workbeattalent.orderservice.customer.CustomerClient;
+import com.workbeattalent.orderservice.customer.CustomerResponse;
 import com.workbeattalent.orderservice.exceptions.BusinessException;
 import com.workbeattalent.orderservice.exceptions.OrderNotFoundException;
 import com.workbeattalent.orderservice.kafka.KafkaOrderProducer;
@@ -9,6 +10,8 @@ import com.workbeattalent.orderservice.lines.OrderLineService;
 import com.workbeattalent.orderservice.lines.dto.OrderLineRequest;
 import com.workbeattalent.orderservice.order.dto.OrderRequest;
 import com.workbeattalent.orderservice.order.dto.OrderResponse;
+import com.workbeattalent.orderservice.payment.PaymentClient;
+import com.workbeattalent.orderservice.payment.PaymentRequest;
 import com.workbeattalent.orderservice.product.ProductClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +23,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class OrderService {
+    private final CustomerClient customerClient;
+    private final PaymentClient paymentClient;
+    private final ProductClient productClient;
 
     private final OrderRepository repository;
-    private final CustomerClient customerClient;
-    private final ProductClient productClient;
     private final OrderMapper orderMapper;
     private final OrderLineService lineService;
     private final KafkaOrderProducer orderProducer;
@@ -50,7 +54,16 @@ public class OrderService {
                         purchaseRequest.requestedQuantity()
                 )
         ));
-        // Todo: Initiate payment (*)
+
+        // Initiate payment [OpenFeign] -> CALL TO PAYMENT SERVICE
+        final var paymentId = this.paymentClient.processPayment(new PaymentRequest(
+                null,
+                request.amount(),
+                request.paymentMethod(),
+                savedOrder.getId(),
+                savedOrder.getReference(),
+                new CustomerResponse(customer.id(), customer.firstname(), customer.lastname(), customer.email())
+        ));
 
         // Notify customer (*) via kafka -> SEND MESSAGE TO THE NOTIFICATION SERVICE
         log.info("Calling NOTIFICATION SERVICE...");
