@@ -2,7 +2,7 @@
 
 ## Description
 
-E-Komerce is a microservice application builded for modeling the interaction of elements which constitute a real world
+E-Komerce is a microservice application built for modeling the interaction of elements which constitute a real world
 e-commerce application, including product browsing, product ordering, customer management, payment, notification
 management, etc. With those elements in separated services.
 
@@ -27,10 +27,12 @@ management, etc. With those elements in separated services.
 - Browse Product Catalogue
 - Add Product
 - Order Product
+- Make payment (simulated for now)
 
 ## Technologies
 
 - Java
+- Kotlin
 - Spring Boot Starter Web
 - Spring Cloud Config Server
 - Spring Cloud Starter Config
