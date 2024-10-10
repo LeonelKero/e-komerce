@@ -30,7 +30,7 @@ public class OrderService {
 
     public Long save(final OrderRequest request) {
         log.info("Preparing to save order");
-        // Check the customer [OpenFeign] -> CALL TO CUSTOMER SERVICE
+        // Check if customer exists [OpenFeign] -> CALL TO CUSTOMER SERVICE
         log.info("Calling CUSTOMER SERVICE for details...");
         final var customer = this.customerClient.findCustomer(request.customerId())
                 .orElseThrow(() -> new BusinessException("Unable to perform order for customer with ID " + request.customerId()));

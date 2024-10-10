@@ -15,10 +15,9 @@ public class OrderLineService {
     private final OrderLineRepository orderLineRepository;
     private final OrderLineMapper orderLineMapper;
 
-    public Long saveLine(final OrderLineRequest newLine) {
-        return this.orderLineRepository
-                .save(orderLineMapper.toOrderLine(newLine))
-                .getId();
+    public void saveLine(final OrderLineRequest newLine) {
+        this.orderLineRepository
+                .save(orderLineMapper.toOrderLine(newLine));
     }
 
     public List<OrderLineResponse> getAllOrderLinesByOrderId(final Long order) {
