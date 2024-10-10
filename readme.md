@@ -2,7 +2,9 @@
 
 ## Description
 
-E-Komerce is a microservice application builded for modeling the interaction of elements which constitute a real world e-commerce application, including product browsing, product ordering, customer management, payment, notification management, etc. With those elements in separated services.
+E-Komerce is a microservice application builded for modeling the interaction of elements which constitute a real world
+e-commerce application, including product browsing, product ordering, customer management, payment, notification
+management, etc. With those elements in separated services.
 
 ## Domains
 
@@ -21,7 +23,12 @@ E-Komerce is a microservice application builded for modeling the interaction of 
 
 ## Features
 
-## Tech Stack
+- Create an Account
+- Browse Product Catalogue
+- Add Product
+- Order Product
+
+## Technologies
 
 - Java
 - Spring Boot Starter Web
@@ -39,6 +46,7 @@ E-Komerce is a microservice application builded for modeling the interaction of 
 - Spring Boot Starter Validation
 - Spring Boot Devtools
 - Spring Boot Testcontainer
-- Flyway 
+- Flyway
 - Spring Cloud Starter OpenFeign
 - MySQL
+- Spring Kafka
