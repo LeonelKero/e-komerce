@@ -6,7 +6,7 @@ public record Product(
         Integer id,
         String name,
         String description,
-        Integer availableQuantity,
-        BigDecimal price
+        BigDecimal price,
+        Integer quantity
 ) {
 }
