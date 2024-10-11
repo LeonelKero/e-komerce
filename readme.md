@@ -20,6 +20,7 @@ management, etc. With those elements in separated services.
 - Discovery Server
 - Customer service
 - Product service
+- Payment service
 
 ## Features
 
@@ -52,3 +53,5 @@ management, etc. With those elements in separated services.
 - Spring Cloud Starter OpenFeign
 - MySQL
 - Spring Kafka
+- Spring Boot Starter Mail
+- Spring Boot Starter Thymeleaf
