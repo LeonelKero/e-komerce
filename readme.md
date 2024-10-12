@@ -21,6 +21,7 @@ management, etc. With those elements in separated services.
 - Customer service
 - Product service
 - Payment service
+- Notification service
 
 ## Features
 
@@ -29,6 +30,7 @@ management, etc. With those elements in separated services.
 - Add Product
 - Order Product
 - Make payment (simulated for now)
+- Send email notification
 
 ## Technologies
 
@@ -41,6 +43,7 @@ management, etc. With those elements in separated services.
 - Spring Boot Cloud Starter Netflix Eureka Server
 - Docker
 - PostgreSQL
+- MailDev
 - Mongo DB
 - Spring Starter Data JPA
 - Lombok
