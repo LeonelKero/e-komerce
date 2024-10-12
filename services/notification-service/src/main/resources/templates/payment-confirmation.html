@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .email-header h1 {
+            color: #4CAF50;
+            font-size: 24px;
+        }
+        .email-body {
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+        .email-footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
+        }
+        .order-summary {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .order-summary h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .order-summary p {
+            margin: 5px 0;
+        }
+        .order-summary strong {
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="email-header">
+        <h1>Payment Successful!</h1>
+    </div>
+    <div class="email-body">
+        <p>Dear <strong th:text="${customerName}"></strong>,</p>
+        <p>Thank you for your purchase. We are happy to confirm that your payment has been successfully processed.</p>
+
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <p><strong>Order Reference:</strong> <span th:text="${orderRef}"></span></p>
+            <p><strong>Total Amount Paid:</strong> $<span th:text="${amount}"></span></p>
+        </div>
+
+        <p>If you have any questions, feel free to reach out to our support team.</p>
+
+        <a href="#" class="button">View Your Order</a>
+    </div>
+    <div class="email-footer">
+        <p>&copy; 2024 work beats talent. All rights reserved.</p>
+    </div>
+</div>
+</body>
+</html>
