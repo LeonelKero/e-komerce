@@ -20,4 +20,4 @@ spring:
         org.json.type.mapping: request:com.workbeattalent.paymentservice.payment.kafka.PaymentNotificationRequest
 
 server:
-  port: 8083
+  port: 8084
