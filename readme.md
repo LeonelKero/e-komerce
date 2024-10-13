@@ -22,6 +22,7 @@ management, etc. With those elements in separated services.
 - Product service
 - Payment service
 - Notification service
+- Api Gateway
 
 ## Features
 
@@ -58,3 +59,4 @@ management, etc. With those elements in separated services.
 - Spring Kafka
 - Spring Boot Starter Mail
 - Spring Boot Starter Thymeleaf
+- Spring Cloud Starter Gateway
