@@ -1,5 +1,6 @@
 package com.workbeatstalent.productservice.product;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.workbeatstalent.productservice.category.Category;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,7 +15,8 @@ import java.math.BigDecimal;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
+    @SequenceGenerator(name = "product_seq", sequenceName = "product_seq")
     private Integer id;
 
     private String name;
@@ -23,5 +25,6 @@ public class Product {
     private BigDecimal price;
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonManagedReference
     private Category category;
 }
