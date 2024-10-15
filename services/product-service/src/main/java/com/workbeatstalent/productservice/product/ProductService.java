@@ -81,4 +81,8 @@ public class ProductService {
                 .map(mapper::toResponse)
                 .toList();
     }
+
+    public Long countAllProducts() {
+        return this.repository.count();
+    }
 }

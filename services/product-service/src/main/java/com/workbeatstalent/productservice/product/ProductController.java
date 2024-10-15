@@ -40,4 +40,9 @@ public class ProductController {
     public ResponseEntity<List<ProductResponse>> allProducts() {
         return ResponseEntity.ok(this.service.getAll());
     }
+
+    @GetMapping(path = {"/count"})
+    public ResponseEntity<Long> countProducts() {
+        return ResponseEntity.ok(this.service.countAllProducts());
+    }
 }
