@@ -2,4 +2,4 @@ spring:
   application:
     name: customer-service
   config:
-    import: optional:/configserver:http://localhost:8888 # 'optional' is used in case the config server is not up, then this app will start on default port
+    import: optional:configserver:http://localhost:8888 # 'optional' is used in case the config server is not up, then this app will start on default port
