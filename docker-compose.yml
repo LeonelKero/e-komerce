@@ -39,6 +39,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=nero
       - MONGO_INITDB_ROOT_PASSWORD=nero
+      - MONGO_INITDB_DATABASE=customers
     ports:
       - "27017:27017"
     volumes:

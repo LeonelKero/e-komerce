@@ -4,6 +4,7 @@ spring:
   # Mongo - these configurations match the ones defined for Mongo Database
   data:
     mongodb:
+      uri: mongodb://localhost:27017
       username: nero
       password: nero
       host: localhost
