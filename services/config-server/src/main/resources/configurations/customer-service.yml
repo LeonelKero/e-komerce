@@ -1,10 +1,10 @@
 server:
-  port: 8081
+  port: 8086
+
 spring:
-  # Mongo - these configurations match the ones defined for Mongo Database
+  # Mongo - these configurations match the ones defined for Mongo Database in docker-compose file
   data:
     mongodb:
-      uri: mongodb://localhost:27017
       username: nero
       password: nero
       host: localhost
