@@ -33,7 +33,7 @@ public class OrderService {
     private final KafkaOrderProducer orderProducer;
 
     public Long save(final OrderRequest request) {
-        log.info("Preparing to save order");
+        log.info("Start processing order...");
         // Check if customer exists [OpenFeign] -> CALL TO CUSTOMER SERVICE
         log.info("Calling CUSTOMER SERVICE for details...");
         final var customer = this.customerClient.findCustomer(request.customerId())
@@ -43,8 +43,12 @@ public class OrderService {
         log.info("Calling PRODUCT SERVICE for details...");
         final var purchasedProductList = this.productClient.getPurchases(request.products());
 
+        log.info("FINISHED GETTING 'CUSTOMER' AND 'PRODUCT' DETAILS");
+
         // Persist order
+        log.info("Start persisting order...");
         final var savedOrder = this.repository.save(orderMapper.toOrder(request));
+        log.info("*** Order persisted ***");
 
         request.products().forEach(purchaseRequest -> this.lineService.saveLine(
                 new OrderLineRequest(
@@ -54,8 +58,10 @@ public class OrderService {
                         purchaseRequest.requestedQuantity()
                 )
         ));
+        log.info("Notification PUSHED FOR ORDER PLACED");
 
         // Initiate payment [OpenFeign] -> CALL TO PAYMENT SERVICE
+        log.info("PAYMENT INITIALIZATION...");
         final var paymentId = this.paymentClient.processPayment(new PaymentRequest(
                 null,
                 request.amount(),
@@ -64,6 +70,7 @@ public class OrderService {
                 savedOrder.getReference(),
                 new CustomerResponse(customer.id(), customer.firstname(), customer.lastname(), customer.email())
         ));
+        log.info("*** PAYMENT DONE! ***");
 
         // Notify customer (*) via kafka -> SEND MESSAGE TO THE NOTIFICATION SERVICE
         log.info("Calling NOTIFICATION SERVICE...");
@@ -75,7 +82,7 @@ public class OrderService {
                 purchasedProductList
         ));
 
-        log.info("Order saved!");
+        log.info("End processing order...");
         return savedOrder.getId();
     }
 
