@@ -1,5 +1,6 @@
 package com.workbeattalent.orderservice.order;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.workbeattalent.orderservice.lines.OrderLine;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,6 +35,7 @@ public class Order {
     private String customerId;
 
     @OneToMany(mappedBy = "order")
+    @JsonManagedReference
     private Set<OrderLine> lines = new HashSet<>();
 
     @CreatedDate
