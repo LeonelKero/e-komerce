@@ -58,6 +58,16 @@ public class OrderService {
                         purchaseRequest.requestedQuantity()
                 )
         ));
+
+        // Notify customer (*) via kafka -> SEND MESSAGE TO THE NOTIFICATION SERVICE
+        log.info("Calling NOTIFICATION SERVICE...");
+        this.orderProducer.sendOrderConfirmation(new OrderConfirmation(
+                request.ref(),
+                request.amount(),
+                request.paymentMethod(),
+                customer,
+                purchasedProductList
+        ));
         log.info("Notification PUSHED FOR ORDER PLACED");
 
         // Initiate payment [OpenFeign] -> CALL TO PAYMENT SERVICE
@@ -71,16 +81,6 @@ public class OrderService {
                 new CustomerResponse(customer.id(), customer.firstname(), customer.lastname(), customer.email())
         ));
         log.info("*** PAYMENT DONE! ***");
-
-        // Notify customer (*) via kafka -> SEND MESSAGE TO THE NOTIFICATION SERVICE
-        log.info("Calling NOTIFICATION SERVICE...");
-        this.orderProducer.sendOrderConfirmation(new OrderConfirmation(
-                request.ref(),
-                request.amount(),
-                request.paymentMethod(),
-                customer,
-                purchasedProductList
-        ));
 
         log.info("End processing order...");
         return savedOrder.getId();
