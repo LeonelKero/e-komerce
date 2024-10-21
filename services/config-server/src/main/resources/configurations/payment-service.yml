@@ -16,8 +16,8 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
-        # 'request' is the PaymentNotificationRequest object passed to the producer [SAME NAME]
-        org.json.type.mapping: request:com.workbeattalent.paymentservice.payment.kafka.PaymentNotificationRequest
+        # 'paymentConfirmation' is the PaymentNotificationRequest object passed to the producer [SAME NAME]
+        org.json.type.mapping: paymentConfirmation:com.workbeattalent.paymentservice.payment.kafka.PaymentNotificationRequest
 
 server:
   port: 8084
