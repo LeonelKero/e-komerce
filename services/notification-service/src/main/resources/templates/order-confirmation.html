@@ -78,7 +78,9 @@
 
     <div class="order-details">
         <p>Your order has been successfully placed with the following details:</p>
-        <p><strong>Order Amount:</strong> $<span th:text="${totalAmount}"></span></p>
+        <p><strong>Order Amount:</strong> $<span
+                th:text="${#numbers.formatInteger(products.stream().mapToDouble(p -> p.quantity * p.price).sum(), 2)}"></span>
+        </p>
         <p><strong>Order Reference:</strong> <span th:text="${orderRef}">#12345</span></p>
     </div>
 
