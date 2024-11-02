@@ -9,7 +9,7 @@ class PaymentMapper {
 
     fun toPayment(request: PaymentRequest): Payment {
         return Payment(
-            id = request.id,
+            id = null,
             amount = request.amount,
             paymentMethod = request.paymentMethod,
             orderId = request.orderId,

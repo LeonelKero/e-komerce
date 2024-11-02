@@ -13,7 +13,6 @@ import java.util.List;
 public record OrderRequest(
         Long id,
 
-        @NotNull(message = "The reference cannot be null")
         @NotEmpty(message = "The reference cannot be empty")
         @NotBlank(message = "The reference cannot be blank")
         String ref,
@@ -24,7 +23,6 @@ public record OrderRequest(
         @NotNull(message = "A payment method must be specified")
         PaymentMethod paymentMethod,
 
-        @NotNull(message = "Customer ID is required")
         @NotEmpty(message = "Customer ID cannot be empty")
         @NotBlank(message = "Customer ID cannot be blank")
         String customerId,

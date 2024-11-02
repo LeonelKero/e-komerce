@@ -16,13 +16,13 @@ spring:
     consumer:
       bootstrap-servers:
         - localhost:9092
-      group-id: paymentGroup, orderGroup
+      group-id: orderGroup,paymentGroup
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
-        spring.json.type.mapping: orderConfirmation=com.workbeattalent.notification_service.kafka.order.OrderConfirmation,paymentConfirmation=com.workbeattalent.notification_service.kafka.payment.PaymentConfirmation
+        spring.json.type.mapping: orderConfirmation:com.workbeattalent.notification_service.kafka.order.OrderConfirmation,paymentConfirmation:com.workbeattalent.notification_service.kafka.payment.PaymentConfirmation
   # Email (MailDev) configuration
   mail:
     default-encoding: UTF-8
@@ -33,7 +33,7 @@ spring:
     properties:
       mail:
         smtp:
-          trust: '*'
+          trust: "*"
         auth: true
         starttls:
           enabled: true

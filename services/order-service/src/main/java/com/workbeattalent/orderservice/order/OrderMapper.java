@@ -9,7 +9,6 @@ public class OrderMapper {
 
     public Order toOrder(final OrderRequest request) {
         return Order.builder()
-                .id(request.id())
                 .reference(request.ref())
                 .customerId(request.customerId())
                 .totalAmount(request.amount())
@@ -23,7 +22,8 @@ public class OrderMapper {
                 order.getReference(),
                 order.getTotalAmount(),
                 order.getPaymentMethod(),
-                order.getCustomerId()
+                order.getCustomerId(),
+                order.getLines()
         );
     }
 }

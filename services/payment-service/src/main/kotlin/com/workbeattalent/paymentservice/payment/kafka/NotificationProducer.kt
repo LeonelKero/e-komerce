@@ -11,10 +11,10 @@ class NotificationProducer(private val kafkaTemplate: KafkaTemplate<String, Paym
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    fun sendNotification(request: PaymentNotificationRequest) {
-        logger.info("PAYMENT SERVICE -> Start sending payment notification with {}", request)
+    fun sendNotification(paymentConfirmation: PaymentNotificationRequest) {
+        logger.info("PAYMENT SERVICE -> Start sending payment notification with {}", paymentConfirmation)
         val message = MessageBuilder
-            .withPayload(request)
+            .withPayload(paymentConfirmation)
             .setHeader(KafkaHeaders.TOPIC, "payment-topic")
             .build()
 

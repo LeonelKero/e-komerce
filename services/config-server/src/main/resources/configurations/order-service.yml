@@ -22,7 +22,7 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         # 'confirmation' represents the OrderConfirmation value passed to kafka order producer
-        spring.json.type.mapping: orderConfirmation:com.workbeattalent.orderservice.kafka.OrderConfirmation
+        spring.json.type.mapping: orderConfirmation=com.workbeattalent.orderservice.kafka.OrderConfirmation
 
 
 application:
